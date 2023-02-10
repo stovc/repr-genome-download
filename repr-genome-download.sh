@@ -1,7 +1,13 @@
 #!/bin/bash
 
+# Directory to download genomes to
+DIR=$1
+
 # Taxonomic rank to pick representatives for. Can be [superkingdom, phylum, class, order, family, genus, species]
-FILTER_RANK=$1
+FILTER_RANK=$2
+
+REP=pwd
+cd $DIR
 
 # Download assembly summary for bacteria, archaea, and viruses
 
@@ -16,7 +22,7 @@ awk FNR!=1 as_* > assembly_summary.tsv
 rm as_*
 
 # make download paths. assembly summary is filtered to pick one representative 
-python3 mk_download_paths.py $1/assembly_summary.tsv $FILTER_RANK
+python3 $REP/mk_download_paths.py $1/assembly_summary.tsv $FILTER_RANK
 
 wget -i download_paths.txt
 rm download_paths.txt
