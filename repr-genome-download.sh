@@ -16,8 +16,7 @@ awk FNR!=1 as_* > assembly_summary.tsv
 rm as_*
 
 # make download paths. assembly summary is filtered to pick one representative 
-python3 mk_download_paths.py assembly_summary.tsv $FILTER_RANK
+python3 mk_download_paths.py $1/assembly_summary.tsv $FILTER_RANK
 
 wget -i download_paths.txt
 rm download_paths.txt
-
