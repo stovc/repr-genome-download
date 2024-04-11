@@ -40,6 +40,7 @@ if __name__ == '__main__':
 
     # make a taxonomy object with information from NCBI taxonomy database
     taxa = NCBITaxa()
+    taxa.update_taxonomy_database()
 
     df = pd.read_csv(data_path, sep='\t',
                      usecols=['refseq_category', 'taxid', 'version_status', 'assembly_level',  # we filter based on these
